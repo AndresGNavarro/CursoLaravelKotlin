@@ -60,6 +60,7 @@
       <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
          
+         <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="">Panel de administración</a>
           <!-- Navbar links -->
           <ul class="navbar-nav align-items-center  ml-md-auto ">
             <li class="nav-item d-xl-none">

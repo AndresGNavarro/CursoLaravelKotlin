@@ -13,7 +13,7 @@
               
               <form role="form" method="POST" action="{{route ('login') }}">
                 @csrf
-
+                <!-- Atrapamos los errores y mostramos el primero de ellos dentro de un elemento html -->
                 @if ($errors->any())
                  <div class="alert alert-danger" role="alert">
                     <strong>Error!</strong>  {{ $errors->first() }}
