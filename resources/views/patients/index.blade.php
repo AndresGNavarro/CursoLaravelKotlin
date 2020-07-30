@@ -7,10 +7,10 @@
             <div class="card-header border-0">
               <div class="row align-items-center">
                 <div class="col">
-                  <h3 class="mb-0">Doctors</h3>
+                  <h3 class="mb-0">Patients</h3>
                 </div>
                 <div class="col text-right">
-                  <a href="{{ url('doctors/create') }}" class="btn btn-sm btn-success">Add doctor</a>
+                  <a href="{{ url('patients/create') }}" class="btn btn-sm btn-success">Add patient</a>
                 </div>
               </div>
             </div>
@@ -33,26 +33,26 @@
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach ($doctors as $doctor)
+                  @foreach ($patients as $patient)
                   <tr>
                     <th scope="row">
-                      {{ $doctor->name }}
+                      {{ $patient->name }}
                     </th>
                     <td>
-                      {{ $doctor->email }}
+                      {{ $patient->email }}
                     </td>
                      <td>
-                      {{ $doctor->cedula }}
+                      {{ $patient->cedula }}
                     </td>
                     <td>
-                      <form action="{{ url('/doctors/'.$doctor->id) }}" method="post">
+                      <form action="{{ url('/patients/'.$patient->id) }}" method="post">
                         @csrf
                         @method('DELETE')
 
-                      <a href=" {{ url('/doctors/'.$doctor->id.'/edit') }}" class="btn btn-sm btn-primary"> Editar</a>
+                      <a href=" {{ url('/patients/'.$patient->id.'/edit') }}" class="btn btn-sm btn-primary"> Editar</a>
 
                       <!-- Por seguridad para  las peticiones DELETE utilizamos un FORM ya que interactuamos directamente con la base de datos e intentaremos borrar registros-->
-                      <button class="btn btn-sm btn-danger" type="submit"> Eliminar</button>
+                      <button class="btn btn-sm btn-danger" type="submit"> Delete</button>
                       </form>
                       
                     </td>
@@ -63,6 +63,10 @@
                 
                 </tbody>
               </table>
+            </div>
+            <div class="card-body">
+              <!-- De esta manera podemos paginar  a traves de LARAVEL-->
+              {{ $patients->links() }}
             </div>
           </div>
     

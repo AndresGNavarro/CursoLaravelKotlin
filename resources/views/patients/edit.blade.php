@@ -7,10 +7,10 @@
             <div class="card-header border-0">
               <div class="row align-items-center">
                 <div class="col">
-                  <h3 class="mb-0">New doctor</h3>
+                  <h3 class="mb-0">Edit patient</h3>
                 </div>
                 <div class="col text-right">
-                  <a href="{{ url('doctors') }}" class="btn btn-sm btn-default">Cancelar y volver</a>
+                  <a href="{{ url('patients') }}" class="btn btn-sm btn-default">Cancelar y volver</a>
                 </div>
               </div>
             </div>
@@ -31,36 +31,39 @@
                   
                 </div>
               @endif
-                  <form action="{{ url('doctors') }}" method="post">
+                  <form action="{{ url('patients/'.$patient->id) }}" method="post">
                     @csrf
+                    <!-- Para poder editar el registro indicamos el método PUT para que al enviar el formulario se atienda esa petición en el controlador  -->
+                    @method('PUT')
                   <div class="form-group">
                     <label for="name"> Nombre</label>
-                    <input type="text" name="name"  class="form-control" required value="{{ old('name')}}" >
+                    <input type="text" name="name"  class="form-control" required value="{{ old('name', $patient->name)}}" >
                   </div>
                 
                   <div class="form-group">
                     <label for="email"> Email</label>
-                    <input type="text" name="email" class="form-control" required value="{{ old('email')}}" >
+                    <input type="text" name="email" class="form-control" required value="{{ old('email', $patient->email)}}" >
                   </div>
 
                   <div class="form-group">
                     <label for="cedula"> DNI</label>
-                    <input type="text" name="cedula" class="form-control"  value="{{ old('cedula')}}" >
+                    <input type="text" name="cedula" class="form-control"  value="{{ old('cedula', $patient->cedula)}}" >
                   </div>
 
                   <div class="form-group">
                     <label for="address"> Dirección</label>
-                    <input type="text" name="address" class="form-control" value="{{ old('address')}}" >
+                    <input type="text" name="address" class="form-control" value="{{ old('address', $patient->address)}}" >
                   </div>
 
                   <div class="form-group">
                     <label for="phone"> Teléfono</label>
-                    <input type="text" name="phone" class="form-control" value="{{ old('phone')}}" >
+                    <input type="text" name="phone" class="form-control" value="{{ old('phone', $patient->phone)}}" >
                   </div>
 
                   <div class="form-group">
-                    <label for="password"> Contraseña</label>
-                    <input type="text" name="password" class="form-control" value="{{  Str::random(6) }}" >
+                    <label for="password"> Contraseña </label>
+                    <input type="text" name="password" class="form-control" value="" >
+                    <p>Ingrese un valor solo si desea modificar la contraseña</p>
                   </div>
 
                   <button type="submit" class="btn btn-primary"> Guardar</button>

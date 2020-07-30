@@ -1,22 +1,25 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Specialty;
 
+use App\Http\Controllers\Controller;
+
+
 class SpecialtyController extends Controller
 {
-	public function __construct()
-	//Con el constructor todas la rutas que este controlador resuelvan exigen al usuario que inicie sesión
+	public function __construct(){
+	//Con el constructor todas la rutas que este controlador resuelvan exigen al usuario que inicie sesión ya que estamos aplicando un Middleware 
 
-	{
+	
 		$this->middleware('auth');
 	}
 
-    public function index()
+    public function index(){
     //Forma básica de acceder a través de una función a una vista localizada en la carpeta de VIEWS (En el método especificamos la ruta específica)
-    {
+    
     	$specialties = Specialty::all();
     	return view('specialties.index', compact('specialties'));
     }
@@ -25,6 +28,7 @@ class SpecialtyController extends Controller
     {
     	return view('specialties.create');
     }
+    
     //La siguiente función contiene las validaciones del los formularios
     private function performValidation(Request $request)
     {
