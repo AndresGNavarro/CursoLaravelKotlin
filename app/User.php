@@ -10,34 +10,27 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+
     protected $fillable = [
         'name', 'email', 'password','cedula','address','phone', 'role'
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
+  
     protected $hidden = [
         'password', 'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
+ 
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
 
-    //Query Scopes
+    //La función specialties() establece la relación muchos a muchos con el modelo Specialty
+    public function specialties()
+    {
+        return $this->belongsToMany(Specialty::class);
+    }
+    //Query Scopes son consultas que podemos invocar a traves de la función s
     public function scopePatients($query)
     {
         return $query->where('role', 'patient');

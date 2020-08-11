@@ -63,13 +63,13 @@
       </li>
       @else{{-- Patient --}}
       <li class="nav-item">
-        <a class="nav-link" href="examples/tables.html">
+        <a class="nav-link" href="/appointments/create">
           <i class="ni ni-send text-danger"></i>
           <span class="nav-link-text">Reservar cita</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="examples/tables.html">
+        <a class="nav-link" href="/appointments">
           <i class="ni ni-time-alarm text-blue"></i>
           <span class="nav-link-text">Mis Citas</span>
         </a>

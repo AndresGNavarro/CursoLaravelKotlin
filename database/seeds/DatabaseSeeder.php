@@ -9,8 +9,11 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
+
+    //En esta función indicamos los seeder que se van a ejecutar
     public function run()
     {
          $this->call(UsersTableSeeder::class);
+         $this->call(SpecialtiesTableSeeder::class);
     }
 }

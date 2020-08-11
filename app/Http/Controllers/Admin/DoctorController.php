@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+//Importación de modelos
 use App\User;
+use App\Specialty;
+//Termina importación modelos
 
 use App\Http\Controllers\Controller;
 
@@ -28,7 +31,8 @@ class DoctorController extends Controller
      */
     public function create()
     {
-        return view('doctors.create');
+        $specialties = Specialty::all();
+        return view('doctors.create', compact('specialties'));
     }
 
     /**
@@ -39,6 +43,8 @@ class DoctorController extends Controller
      */
     public function store(Request $request)
     {
+
+        dd($request->all());
         $rules = [
             'name' => 'required|max:50',
             'email' => 'required|email',

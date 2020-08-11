@@ -47,4 +47,5 @@ Route::middleware(['auth', 'doctor'])->namespace('Doctor')->group(function () {
      
 });
 
-
+	Route::get('/appointments/create', 'AppointmentController@create');
+	Route::post('/appointments', 'AppointmentController@store');

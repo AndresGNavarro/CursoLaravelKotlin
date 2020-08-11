@@ -32,6 +32,7 @@
    
   <!-- Argon CSS -->
   <link rel="stylesheet" href="{{ asset('css/argon.css?v=1.2.0') }}" type="text/css">
+  @yield('styles')
 </head>
 
 <body>
@@ -275,6 +276,8 @@
   <!-- Optional JS -->
   <script src="{{ asset('vendor/chart.js/dist/Chart.min.js') }}"></script>
   <script src="{{ asset('vendor/chart.js/dist/Chart.extension.js') }}"></script>
+  <!-- Aquí se incluyen los scripts que se requieran ejecutar por página-->
+  @yield('scripts')
   <!-- Argon JS -->
   <script src="{{ asset('js/argon.js?v=1.2.0') }}"></script>
 </body>
